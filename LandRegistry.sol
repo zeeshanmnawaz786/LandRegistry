@@ -27,6 +27,7 @@ function SellerIsVerifed(address _address) public{
 function LandInspRejectSeller(address _address) public{
     isValidSeller[_address]= false;
 }
+
 function updateSellerRecord(address _key , string memory _Name,uint _Age ,string memory _City,uint _CNIC, string memory _Email) public{
     sellerData[_key].Name=_Name;
     sellerData[_key].Age=_Age;
@@ -58,7 +59,6 @@ function LandIsVerifed(uint _LandId) public{
 function LandInspRejectLand(uint _LandId) public{
     isValidLand[_LandId]= false;
 }
-
 function LandsOwner(uint _LandId) public view returns(address){
     return LandReg[_LandId].Owner;
 }
@@ -101,7 +101,6 @@ function updateBuyerRecord(address _key , string memory _Name,uint _Age ,string 
     buyerData[_key].CNIC=_CNIC;
     buyerData[_key].Email=_Email;
 }
-
  struct LandInspector{
         uint Id; 
         string Name; 
@@ -114,8 +113,6 @@ function updateBuyerRecord(address _key , string memory _Name,uint _Age ,string 
 function Land_Inspector(uint _key ,uint _Id, string memory _Name,uint _Age,string memory _Destination) public{
     LandInspectorData[_key]= LandInspector(_Id,_Name,_Age,_Destination);
 }
-
-
 function BuyLand(uint _LandId) public payable{
     require(isValidBuyer[msg.sender] == true,"please verify buyer");
     require(isValidLand[_LandId] == true,"please verify seller or Land");
@@ -124,14 +121,8 @@ function BuyLand(uint _LandId) public payable{
 }
 function LandOwnershipTransfer(uint _landId, address payable _newOwner) public{
     LandReg[_landId].Owner = _newOwner;
-
 }
 function tansferAny(uint _LandId ,address _addr) public {
     LandReg[_LandId].Owner=_addr;
+    }
 }
-}
-
-
-
-
-
