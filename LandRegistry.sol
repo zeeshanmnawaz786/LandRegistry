@@ -119,9 +119,6 @@ function BuyLand(uint _LandId) public payable{
     payable(LandReg[_LandId].Owner).transfer(msg.value);
     LandReg[_LandId].Owner = msg.sender;
 }
-function LandOwnershipTransfer(uint _landId, address payable _newOwner) public{
-    LandReg[_landId].Owner = _newOwner;
-}
 function tansferAny(uint _LandId ,address _addr) public {
     LandReg[_LandId].Owner=_addr;
     }
